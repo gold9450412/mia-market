@@ -75,5 +75,61 @@
                 }
             }
         }
+        //下面部分
+        .headBottom
+        {
+            //版心元素
+            .headBottomMain
+            {
+                width: 1200px;
+                margin: 0 auto;
+                .clearfix();
+                //logo
+                .logo
+                {
+                    float: left;
+                    a
+                    {
+                        img
+                        {
+                            width: 175px;
+                            height: 56px;
+                            margin: 25px 45px;
+                        }
+                    }
+                }
+                //search
+                .search
+                {
+                    float: right;
+                    margin-top: 35px;
+                    input
+                    {
+                        &:first-child
+                        {
+                            box-sizing: border-box;
+                            width: 490px;
+                            height: 32px;
+                            padding: 0 4px;
+                            border: 3px solid #ea4a36;
+                            //行內元素的浮動 會解除行內之間的縫隙
+                            float: left;
+                        }
+                        &:last-child
+                        {
+                            width: 68px;
+                            height: 32px;
+                            color: #fff;
+                            background: #ea4a36;
+                            border: none;
+                        }
+                        &::-webkit-input-placeholder
+                        {
+                            color: yellowgreen;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
