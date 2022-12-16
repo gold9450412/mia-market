@@ -1,0 +1,45 @@
+@import 'mixins/clear.less';
+//最外層包裹
+#wrapper{
+    //頭部
+    #header
+    {
+        //上面部分
+        .headTop
+        {
+            background: #eaeaea;
+            height: 30px;
+            //版心元素
+            .headTopMain
+            {
+                width: 1200px;
+                margin: 0 auto;
+                line-height: 30px;
+                //解高度塌陷
+                .clearfix();
+                //左側
+                .left
+                {
+                    h5
+                    {
+                        float: left;
+                        margin-right: 5px;
+                    }
+                    p
+                    {
+                        float: left;
+                        a
+                        {
+                            &:first-child
+                            {
+                                border-right: 1px solid #b3aeae;
+                                margin-right: 0px;
+                                padding-right: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
