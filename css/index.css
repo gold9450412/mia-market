@@ -1,3 +1,7 @@
+#wrapper a {
+  color: #7a7a7a;
+  text-decoration: none;
+}
 #wrapper #header .headTop {
   background: #eaeaea;
   height: 30px;
@@ -12,6 +16,9 @@
   display: block;
   content: '';
 }
+#wrapper #header .headTop .headTopMain .left {
+  float: left;
+}
 #wrapper #header .headTop .headTopMain .left h5 {
   float: left;
   margin-right: 5px;
@@ -23,4 +30,21 @@
   border-right: 1px solid #b3aeae;
   margin-right: 0px;
   padding-right: 5px;
+}
+#wrapper #header .headTop .headTopMain .right {
+  float: right;
+}
+#wrapper #header .headTop .headTopMain .right nav {
+  font-size: 0;
+}
+#wrapper #header .headTop .headTopMain .right nav a {
+  font-size: 12px;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #b3aeae;
+}
+#wrapper #header .headTop .headTopMain .right nav a:last-child {
+  border: none;
+  padding-right: 0;
+  margin-right: 0;
 }

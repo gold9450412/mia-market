@@ -1,6 +1,11 @@
 @import 'mixins/clear.less';
 //最外層包裹
 #wrapper{
+    a
+    {
+        color: #7a7a7a;
+        text-decoration: none;
+    }
     //頭部
     #header
     {
@@ -20,6 +25,7 @@
                 //左側
                 .left
                 {
+                    float: left;
                     h5
                     {
                         float: left;
@@ -35,6 +41,34 @@
                                 border-right: 1px solid #b3aeae;
                                 margin-right: 0px;
                                 padding-right: 5px;
+                            }
+                        }
+                    }
+                }
+                //右側
+                .right
+                {
+                    float: right;
+                    nav
+                    {
+                        //文字預設 除了margin外，文字間還會自帶間距
+                        //需要將font-size調成0 解掉
+                        font-size: 0;
+                        a
+                        {
+                            //呈上，調成0解掉後，僅a的要開回來
+                            font-size: 12px;
+                            margin-right: 10px;
+                            //用padding是為了撐開看border的距離
+                            padding-right: 10px;
+                            border-right: 1px solid #b3aeae;
+                            //最後一個元素沒有豎線
+                            &:last-child
+                            {
+                                border: none;
+                                //重要: 因為沒豎線了，記得把padding拿掉
+                                padding-right: 0;
+                                margin-right: 0;
                             }
                         }
                     }
