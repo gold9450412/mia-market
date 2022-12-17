@@ -177,6 +177,7 @@
             margin: 15px auto 0 auto;
             //同樣用到消除行內元素自帶間距的做法
             font-size: 0px;
+            //路徑導航開始
             #navPath
             {
                 padding: 9px 15px 9px 0;
@@ -190,6 +191,66 @@
                     font-size: 12px;
                 }
             }
+            //路徑導航結束
+            //中間區域開始
+            #center
+            {
+                margin: 5px 0 15px;
+                //左側放大鏡開始
+                #left
+                {
+                    width: 400px;
+                    float: left;
+                    //上邊
+                    #leftTop
+                    {
+                        width: 400px;
+                        position: relative;
+                        //小圖框
+                        #smallPic
+                        {
+                            width: 400px;
+                            height: 400px;
+                            border: 1px solid #dfdfdf;
+                            position: relative;
+                            //小圖片
+                            img
+                            {}
+                            //蒙版元素
+                            .mask
+                            {
+                                width: 200px;
+                                height: 200px;
+                                background: rgba(255, 255, 255, .5);
+                                border: 1px solid #ddd;
+                                //相對於小圖框定位
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                            }
+                        }
+                        //大圖框
+                        #bigPic
+                        {
+                            width: 400px;
+                            height: 400px;
+                            border: 1px solid #ddd;
+                            left: 420px;
+                            top: 0px;
+                            position: absolute;
+                            overflow: hidden;
+                            //大圖片
+                            img
+                            {
+                                width: 800px;
+                                height: 800px;
+                            }
+                        }
+                    }
+                    //下邊
+                }
+            }
+            //中間區域結束
         }
     }
     //內容區域結束
