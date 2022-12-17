@@ -78,6 +78,19 @@ window.onload = function()
             //leftTop追加大圖框
             leftTop.appendChild(BigPic);
 
+            //設置移動事件
+            smallPic.onmousemove = function(event)
+            {
+                //event.clientX鼠標到瀏覽器最左側的點
+                //getBoundingClientRect().left 為該元素到瀏覽器左側可視點的距離
+                //maskDiv.offsetWidth 為蒙版寬度
+                var left = event.clientX - smallPic.getBoundingClientRect().left - maskDiv.offsetWidth/2;
+                var top = event.clientY - smallPic.getBoundingClientRect().top - maskDiv.offsetHeight/2;
+                
+                //設置蒙版屬性
+                maskDiv.style.left = left + "px";
+                maskDiv.style.top = top + "px";
+            }
             //3. 移除時(onmouseleave)，移除蒙版、大圖框、大圖片元素
             smallPic.onmouseleave = function()
             {
