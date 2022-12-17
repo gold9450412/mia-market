@@ -133,6 +133,7 @@
         }
     }
     //頭部結束
+    //分類導航開始
     #navWrap
     {
         border-bottom: 2px solid #e1251b;
@@ -164,7 +165,32 @@
             }
         }
     }
-        
-    //分類導航開始
     //分類導航結束
+    //內容區域開始
+    #content
+    {
+        //版心元素
+        .contentMain
+        {
+            width: 1200px;
+            //居中 且與上邊的距離
+            margin: 15px auto 0 auto;
+            //同樣用到消除行內元素自帶間距的做法
+            font-size: 0px;
+            .navPath
+            {
+                padding: 9px 0px 9px 0;
+                a
+                {
+                    font-size: 12px;
+                }
+                i
+                {
+                    padding: 0 5px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    //內容區域結束
 }
