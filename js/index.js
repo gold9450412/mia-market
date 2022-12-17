@@ -108,6 +108,16 @@ window.onload = function()
                 //設置蒙版屬性
                 maskDiv.style.left = left + "px";
                 maskDiv.style.top = top + "px";
+
+                //大圖框移動
+                //計算移動距離的倍率，圖框因為不會動 一律用clientWidth
+                var scale = (smallPic.clientWidth - maskDiv.offsetWidth) / (BigImg.offsetWidth - BigPic.clientWidth);
+
+                //由倍率，算出大圖片要移動多少
+                //注意，要加上負號，他的移動方式和蒙版的不同
+                //蒙版是在小圖框上移動， 而大圖框是在大圖片上移動  相反的
+                BigImg.style.left = -left / scale + "px";
+                BigImg.style.top = -top / scale + "px";
             }
             //3. 移除時(onmouseleave)，移除蒙版、大圖框、大圖片元素
             smallPic.onmouseleave = function()
