@@ -87,6 +87,24 @@ window.onload = function()
                 var left = event.clientX - smallPic.getBoundingClientRect().left - maskDiv.offsetWidth/2;
                 var top = event.clientY - smallPic.getBoundingClientRect().top - maskDiv.offsetHeight/2;
                 
+                //判斷邊界
+                if (left < 0)
+                {
+                    left = 0;
+                }else if (left > smallPic.clientWidth - maskDiv.offsetWidth)
+                {
+                    //clientWidth不包含邊框 (含padding)
+                    //offsetWidth包含邊框 (含padding)，因mask是整題移動，所以也要計算到
+                    left = smallPic.clientWidth - maskDiv.offsetWidth;
+                }
+
+                if (top < 0)
+                {
+                    top = 0;
+                }else if (top > smallPic.clientHeight - maskDiv.offsetHeight)
+                {
+                    top = smallPic.clientHeight - maskDiv.offsetHeight;
+                }
                 //設置蒙版屬性
                 maskDiv.style.left = left + "px";
                 maskDiv.style.top = top + "px";
