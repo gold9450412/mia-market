@@ -6,35 +6,89 @@ window.onload = function()
      * 3. 遍歷數據，數據是動態的，相應的DOM也必須動態產生，需要創建DOM元素 (根據數據的數量)
      * 4. 創建標籤，而最後一個DOM元素，只創建a標籤，不創建i標籤
      */
-
-    // 1. 先獲得頁面元素 (navPath)
-    var navPath = document.querySelector('#wrapper #content .contentMain #navPath');
-    // 2. 獲取數據 (data.js -> goodData.path)
-    var path = goodData.path;
-    // 3. 遍歷數據，數據是動態的，相應的DOM也必須動態產生，需要創建DOM元素 (根據數據的數量)
-    for (var i = 0; i<path.length; i++)
+    navPathDataBind();
+    //路徑導航的數據渲染
+    function navPathDataBind()
     {
-        // 最後一個不追加i元素及href
-        if (i == path.length-1)
+        // 1. 先獲得頁面元素 (navPath)
+        var navPath = document.querySelector('#wrapper #content .contentMain #navPath');
+        // 2. 獲取數據 (data.js -> goodData.path)
+        var path = goodData.path;
+        // 3. 遍歷數據，數據是動態的，相應的DOM也必須動態產生，需要創建DOM元素 (根據數據的數量)
+        for (var i = 0; i<path.length; i++)
         {
-            var aNode = document.createElement('a'); 
-            aNode.innerText = path[i].title;
-            navPath.appendChild(aNode);
+            // 最後一個不追加i元素及href
+            if (i == path.length-1)
+            {
+                var aNode = document.createElement('a'); 
+                aNode.innerText = path[i].title;
+                navPath.appendChild(aNode);
+            }
+            else
+            {
+                // 4. 創建標籤，而最後一個DOM元素，只創建a標籤，不創建i標籤
+                var aNode = document.createElement('a');
+                aNode.href = path[i].url;
+                // innerText和innerHTML不同，Text是顯示文字，HTML是整個標籤含內容
+                aNode.innerText = path[i].title;
+                // 創建i標籤
+                var iNode = document.createElement('i');
+                iNode.innerText = '/';
+                // 追加剛剛添加的元素
+                navPath.appendChild(aNode);
+                navPath.appendChild(iNode);
+        }    
         }
-        else
-        {
-            // 4. 創建標籤，而最後一個DOM元素，只創建a標籤，不創建i標籤
-            var aNode = document.createElement('a');
-            aNode.href = path[i].url;
-            // innerText和innerHTML不同，Text是顯示文字，HTML是整個標籤含內容
-            aNode.innerText = path[i].title;
-            // 創建i標籤
-            var iNode = document.createElement('i');
-            iNode.innerText = '/';
-            // 追加剛剛添加的元素
-            navPath.appendChild(aNode);
-            navPath.appendChild(iNode);
-       }    
     }
+
+    /**
+     * 1. 獲取小圖框元素對象，並且設置移入事件 (onmouseover, onmouseenter)
+     *  onmouseover: 有冒泡效果，會影響父元素。 onmouseenter則無，所以我們選onmouseenter
+     * 2. 動態創建蒙版及大圖框、大圖片元素
+     * 3. 移除時(onmouseleave)，移除蒙版、大圖框、大圖片元素
+    */
+    bigClassBind();
+    //放大鏡的移入移出效果
+    function bigClassBind()
+    {   //1. 獲取小圖框元素對象，並且設置移入事件 (onmouseover, onmouseenter)
+        var smallPic = document.querySelector('#wrapper #content .contentMain #center #left #leftTop #smallPic');  
+        var leftTop = document.querySelector('#wrapper #content .contentMain #center #left #leftTop');
+
+        smallPic.onmouseenter = function()
+        {
+            // 2. 動態創建蒙版及大圖框、大圖片元素
+            // 創建蒙版
+            var maskDiv = document.createElement('div');
+            maskDiv.className = "mask";
+
+            //創建大圖框元素
+            var BigPic = document.createElement('div');
+            BigPic.id = 'bigPic';
+
+            //創建大圖片元素
+            var BigImg = document.createElement('img');
+            BigImg.src = "images/b1.png";
+
+            //大圖框 追加 子元素大圖片
+            BigPic.appendChild(BigImg);
+
+            //小圖框追加蒙版
+            smallPic.appendChild(maskDiv);
+
+            //leftTop追加大圖框
+            leftTop.appendChild(BigPic);
+
+            //3. 移除時(onmouseleave)，移除蒙版、大圖框、大圖片元素
+            smallPic.onmouseleave = function()
+            {
+                //讓小圖框移除蒙版元素
+                smallPic.removeChild(maskDiv);
+
+                //讓leftTop移除大圖框
+                leftTop.removeChild(BigPic);
+            }
+        }
+    }
+
     
 }
