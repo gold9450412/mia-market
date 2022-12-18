@@ -252,6 +252,55 @@
                         }
                     }
                     //下邊
+                    #leftBottom
+                    {
+                        width: 400px;
+                        margin-top: 5px;
+                        a
+                        {
+                            width: 10px;
+                            height: 54px;
+                            border: 1px solid #ccc;
+                            background: #ebebeb;
+                            text-align: center;
+                            line-height: 54px;
+                            font-size: 12px;
+                            float: left;
+                            &:first-child
+                            {
+                                margin-right: 4px;
+                            }
+                        }
+                        #piclist
+                        {
+                            width: 372px;
+                            height: 56px;
+                            float: left;
+                            //因下方的強制不換行，全部的圖片都到同一行了，要隱藏
+                            overflow: hidden;
+                            ul
+                            {
+                                font-size: 0;
+                                //強制不換行
+                                white-space: nowrap;
+                                li
+                                {
+                                    width: 50px;
+                                    height: 50px;
+                                    border: 1px solid #ccc;
+                                    padding: 2px;
+                                    margin-right: 20px;
+                                    display: inline-block;
+                                    img
+                                    {
+                                        width: 50px;
+                                        height: 50px;
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
                 }
             }
             //中間區域結束
