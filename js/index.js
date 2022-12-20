@@ -131,5 +131,36 @@ window.onload = function()
         }
     }
 
-    
+    /**
+     * 1. 先獲取piclist元素下的ul
+     * 2. 再獲取data.js文件下的goodData -> imagessrc
+     * 3. 遍歷數組，根據數組長度創建li元素
+     * 4. 讓ul遍歷追加li元素
+     */
+    //動態改變放大鏡縮略圖的數據
+    thumbnailData();
+    function thumbnailData()
+    {
+        //1. 先獲取piclist元素下的ul
+        var ul = document.querySelector('#wrapper #content .contentMain #center #left #leftBottom #piclist ul ');
+        
+        //2. 再獲取data.js文件下的goodData -> imagessrc
+        var imagessrc = goodData.imagessrc;
+        console.log(imagessrc);
+
+        //3. 遍歷數組，根據數組長度創建li元素
+        for (var i = 0; i < imagessrc.length; i++)
+        {
+            var newLi = document.createElement('li');
+            var newImg = document.createElement('img');
+            newImg.src = imagessrc[i].s;
+
+            //讓li追加img元素
+            newLi.appendChild(newImg);
+
+            //4. 讓ul遍歷追加li元素
+            ul.appendChild(newLi);
+        }
+
+    }
 }
