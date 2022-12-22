@@ -278,11 +278,17 @@
                             float: left;
                             //因下方的強制不換行，全部的圖片都到同一行了，要隱藏
                             overflow: hidden;
+                            position: relative;
                             ul
                             {
                                 font-size: 0;
                                 //強制不換行
                                 white-space: nowrap;
+                                //我們會用箭頭 去改變ul的位置，達到輪播圖的效果，他會去控制left，所以要用絕對定位 才能使用left
+                                position: absolute;
+                                //輪播圖 滾動效果
+                                transition: 0.5s;
+                                left: 0;
                                 li
                                 {
                                     width: 50px;

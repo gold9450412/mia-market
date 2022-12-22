@@ -201,4 +201,53 @@ window.onload = function()
             }
         }
     }
+
+    //點擊縮略圖 左右箭頭的效果
+    /**
+     * 1. 先獲取左右兩端的箭頭按鈕
+     * 2. 在獲取可視的div及ul元素 和 所有的li元素
+     * 3. 計算 (發生起點、步長、ul總共可以移動的距離值)
+     * 4. 然後再發生點擊事件
+     */
+    thumbnailLeftRightClick();
+    function thumbnailLeftRightClick()
+    {
+        // 1. 先獲取左右兩端的箭頭按鈕
+        var prev = document.querySelector('#wrapper #content .contentMain #center #left #leftBottom a.prev');
+        var next = document.querySelector('#wrapper #content .contentMain #center #left #leftBottom a.next');
+        
+        // 2. 在獲取可視的div及ul元素 和 所有的li元素
+        var piclist = document.querySelector('#wrapper #content .contentMain #center #left #leftBottom #piclist');
+        var ul = document.querySelector('#wrapper #content .contentMain #center #left #leftBottom #piclist ul');
+        var liNodes = document.querySelectorAll('#wrapper #content .contentMain #center #left #leftBottom #piclist ul li');
+        
+        // 3. 計算 (發生起點、步長、ul總共可以移動的距離值)
+        //我們希望按一次按鈕，移動2張圖 (2張圖+2個margin-right 20px*2)
+        var start = 0;
+        var step = (liNodes[0].offsetWidth + 20) * 2;
+
+        //ul總共可以移動的距離值(即被隱藏的部分，需要移動的部分) = ul的總寬度 - div框的寬度(縮略圖) = (圖片總數 - div中顯示的數量) * (li的寬度 + 20(margin-right))
+        var endPosition = (liNodes.length - 5) * (liNodes[0].offsetWidth + 20);
+
+        // 4. 然後再發生點擊事件
+        //注意 因為ul的移動都是向左，都使得left小於0，所以改left時，都會加上負號
+        next.onclick = function()
+        {
+            start += step;
+            if (start > endPosition)
+            {
+                start = endPosition;
+            }
+            ul.style.left = -start + "px";
+        }
+        prev.onclick = function()
+        {
+            start -= step;
+            if (start < 0)
+            {
+                start = 0;
+            }
+            ul.style.left = -start + "px";
+        }
+    }
 }

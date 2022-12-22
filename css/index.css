@@ -196,10 +196,14 @@
   height: 56px;
   float: left;
   overflow: hidden;
+  position: relative;
 }
 #wrapper #content .contentMain #center #left #leftBottom #piclist ul {
   font-size: 0;
   white-space: nowrap;
+  position: absolute;
+  transition: 0.5s;
+  left: 0;
 }
 #wrapper #content .contentMain #center #left #leftBottom #piclist ul li {
   width: 50px;
