@@ -1,5 +1,7 @@
 window.onload = function()
 {
+    //聲明一個紀錄點擊縮略圖下標
+    var bigimgIndex = 0;
     /**
      * 1. 先獲得頁面元素 (navPath)
      * 2. 獲取數據 (data.js -> goodData.path)
@@ -53,6 +55,7 @@ window.onload = function()
     {   //1. 獲取小圖框元素對象，並且設置移入事件 (onmouseover, onmouseenter)
         var smallPic = document.querySelector('#wrapper #content .contentMain #center #left #leftTop #smallPic');  
         var leftTop = document.querySelector('#wrapper #content .contentMain #center #left #leftTop');
+        var imagessrc = goodData.imagessrc;
 
         smallPic.onmouseenter = function()
         {
@@ -67,7 +70,9 @@ window.onload = function()
 
             //創建大圖片元素
             var BigImg = document.createElement('img');
-            BigImg.src = "images/b1.png";
+
+            //必須等於點擊時的下標
+            BigImg.src = imagessrc[bigimgIndex].b;
 
             //大圖框 追加 子元素大圖片
             BigPic.appendChild(BigImg);
@@ -146,7 +151,6 @@ window.onload = function()
         
         //2. 再獲取data.js文件下的goodData -> imagessrc
         var imagessrc = goodData.imagessrc;
-        console.log(imagessrc);
 
         //3. 遍歷數組，根據數組長度創建li元素
         for (var i = 0; i < imagessrc.length; i++)
@@ -162,5 +166,39 @@ window.onload = function()
             ul.appendChild(newLi);
         }
 
+    }
+
+    //點擊縮略圖 改變小圖框、大圖框的圖片
+    /**
+     * 1. 獲取所有li元素，並且循環發生點擊事件
+     * 2. 點擊縮略圖，確定其下標位置，找到對應的小圖、大圖路徑，並且改變現有src的值
+     */
+    thumbnailClick();
+    function thumbnailClick()
+    {
+        // 1. 獲取所有li元素，並且循環發生點擊事件
+        //注意 選擇器是用All，得到一個list
+        var liNodes = document.querySelectorAll('#wrapper #content .contentMain #center #left #leftBottom #piclist ul li');
+        var smallPic_img = document.querySelector('#wrapper #content .contentMain #center #left #leftTop #smallPic img');
+        var imagessrc = goodData.imagessrc;
+
+        //小圖路徑需要默認 為資料庫中的第一筆，而不是用html寫死
+        smallPic_img.src = imagessrc[0].s
+
+        //循環點擊li標籤
+        for (var i = 0; i < liNodes.length; i++)
+        {
+            
+            // 因i是用var，執行結束後，所有i都通用同一個值(14)，所以要另外添加變量 記錄下標
+            liNodes[i].index = i; //同setAttribute('index',i)
+            liNodes[i].onclick = function()
+            {
+                var idx = this.index;
+                bigimgIndex = idx;
+
+                //變換小圖路徑
+                smallPic_img.src = imagessrc[idx].s;
+            }
+        }
     }
 }
