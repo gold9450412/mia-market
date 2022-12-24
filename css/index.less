@@ -451,6 +451,48 @@
                         }
                     }
 
+                    //商品詳情參數結構
+                    .rightBottom
+                    {
+                        //商品參數的選擇區域
+                        .chooseWrap
+                        {
+                            margin-top: 10px;
+                            line-height: 28px;
+                            //商品參數的選擇區域開始
+                            dl
+                            {
+                                margin-top: 13px;
+                                margin-bottom: 13px;
+                                font-size: 12px;
+                                //這裡很重要，必須清浮動，沒加這行，所有dl將會是擠在同一行
+                                .clearfix();
+                                dt
+                                {
+                                    margin-right: 15px;
+                                    float: left;
+                                }
+                                dd
+                                {
+                                    float: left;
+                                    margin-right: 5px;
+                                    color: #666;
+                                    line-height: 24px;
+                                    padding: 2px 14px;
+                                    border-top: 1px solid #eee;
+                                    border-left: 1px solid #eee;
+                                    border-right: 1px solid #bbb;
+                                    border-bottom: 1px solid #bbb;
+
+                                    &:first-of-type
+                                    {
+                                        color: red;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
             //中間區域結束
