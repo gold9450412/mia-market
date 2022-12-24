@@ -283,8 +283,8 @@ window.onload = function()
                             <i>降價通知</i>
                         </div>
                         <p>
+                            <span>累積評價</span>
                             <span>${goodsDetail.evaluateNum}</span>
-                            <span>670000</span>
                         </p>
                     </div>
                     <div class="priceBottom">
@@ -348,6 +348,38 @@ window.onload = function()
 
             //chooseWrap追加dl
             chooseWrap.appendChild(dlNode);
+        }
+
+    }
+
+    //點擊商品參數之後的顏色排他效果
+    /**
+     * 1. 獲取所有的dl元素，取其中第一個dl元素下的所有dd先做測試
+     * 2. 循環所有的dd元素，並添加事件
+     * 3. 確定實際發生事件的目標源對象設置其文字顏色為紅色，然後給其他所有的元素顏色都重置為基礎顏色(#666)
+     */
+    clickaddBind();
+    function clickaddBind()
+    {
+        //1. 獲取所有的dl元素，取其中第一個dl元素下的所有dd先做測試
+        var dlNodes = document.querySelectorAll('#wrapper #content .contentMain #center #right .rightBottom .chooseWrap dl');   
+        var ddNodes = dlNodes[0].querySelectorAll('dd');
+
+        //2. 循環所有的dd元素，並添加事件
+        for (var i = 0; i < ddNodes.length; i++)
+        {   
+            ddNodes[i].onclick = function()
+            {
+                //3. 確定實際發生事件的目標源對象設置其文字顏色為紅色，然後給其他所有的元素顏色都重置為基礎顏色(#666)
+                //注意 這裡要用this，而不是ddNodes[i]，因為var的特性 for迴圈跑完後 i會卡在最後一個
+                //使用this則為該點擊呼叫對象
+                //重置dd顏色
+                for (j = 0; j < ddNodes.length; j++)
+                {
+                    ddNodes[j].style.color = "#666";
+                }
+                this.style.color = "red";
+            }
         }
 
     }
