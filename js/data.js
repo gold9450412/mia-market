@@ -48,5 +48,84 @@ var goodData =
         support: "以舊換新，閒置手機回收，4G套餐優惠，禮品購",
         address: "台灣 台北市 大安區",
         evaluateNum: 670000,
+        crumbData:
+        [
+            {
+                "title": "選擇顏色",
+                "data": 
+                [
+                    {
+                        type: "金色",
+                        changePrice: 0
+                    },
+                    {
+                        type: "銀色",
+                        changePrice: 40
+                    },
+                    {
+                        type: "黑色",
+                        changePrice: 90
+                    },
+                    {
+                        type: "藍色",
+                        changePrice: 90
+                    },
+                ],
+            },
+            {
+                "title": "內存容量",
+                "data": 
+                [
+                    {
+                        type: "16G",
+                        changePrice: 0
+                    },
+                    {
+                        type: "64G",
+                        changePrice: 40
+                    },
+                    {
+                        type: "128G",
+                        changePrice: 80
+                    },
+                    {
+                        type: "256G",
+                        changePrice: 80
+                    },
+                ],
+            },
+            {
+                "title": "選擇版本",
+                "data": 
+                [
+                    {
+                        type: "公開版",
+                        changePrice: 0
+                    },
+                    {
+                        type: "移動版",
+                        changePrice: 40
+                    },
+                ],
+            },
+            {
+                "title": "購買方式",
+                "data": 
+                [
+                    {
+                        type: "官方標配",
+                        changePrice: 0
+                    },
+                    {
+                        type: "優惠移動版",
+                        changePrice: 40
+                    },
+                    {
+                        type: "電信優惠版",
+                        changePrice: 40
+                    },
+                ],
+            },
+        ]
     }
 }

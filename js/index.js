@@ -305,6 +305,50 @@ window.onload = function()
                 </div>`;
         // 重新渲染rightTop元素
         rightTop.innerHTML = s;
+    }
+
+    //商品參數數據的動態渲染
+    /**
+     * 1. 找rightBottom的元素對象
+     * 2. 查找data.js -> goodData.goodDetail.crumbData數據
+     * 3. 由於數據是數組，需要遍歷，有一個元素 則需要一個動態的dl元素(dt, dd)
+     */
+    rightBottomData();
+    function rightBottomData()
+    {
+        //1. 找rightBottom的元素對象
+        var chooseWrap = document.querySelector('#wrapper #content .contentMain #center #right .rightBottom .chooseWrap');
+        
+        //2. 查找data.js -> goodData.goodDetail.crumbData數據
+        var crumbData = goodData.goodDetail.crumbData;
+
+        //3. 由於數據是數組，需要遍歷，有一個元素 則需要一個動態的dl元素(dt, dd)
+        for (var i = 0; i < crumbData.length; i++)
+        {
+            //創建dl元素
+            var dlNode = document.createElement('dl');
+
+            //創建dt元素
+            var dtNode = document.createElement('dt');
+            dtNode.innerHTML = crumbData[i].title;
+
+            //dl追加dt
+            dlNode.appendChild(dtNode);
+
+            //遍歷dd元素
+            for (var j = 0; j < crumbData[i].data.length; j++)
+            {
+                //創建dd元素
+                var ddNode = document.createElement('dd');
+                ddNode.innerHTML = crumbData[i].data[j].type;
+
+                //dt追加dd
+                dlNode.appendChild(ddNode);
+            }
+
+            //chooseWrap追加dl
+            chooseWrap.appendChild(dlNode);
+        }
 
     }
 }
