@@ -250,4 +250,61 @@ window.onload = function()
             ul.style.left = -start + "px";
         }
     }
+
+    //動態渲染商品詳情
+    /**
+     * 1. 查找rightTop
+     * 2. 查找data.js -> goodData -> goodDetail
+     * 3. 建立一個字符串變量， 將原來的布局結構貼近來，將所對應的數據放在對應的位置上(innerHTML)，重新渲染rightTop
+     */
+    rightTopData();
+    function rightTopData()
+    {
+        // 1. 查找rightTop
+        var rightTop = document.querySelector("#wrapper #content .contentMain #center #right .rightTop");
+        
+        // 2. 查找data.js -> goodData -> goodDetail
+        var goodsDetail = goodData.goodDetail;
+
+        // 3. 建立一個字符串變量， 將原來的布局結構貼近來，將所對應的數據放在對應的位置上(innerHTML)，重新渲染rightTop
+        // 字符串除了雙引號、單引號，還有模板字符串 (template string)
+        // 我們現在要使用模板字符串，因為rightTop內容太多，容易拼接錯誤，且支援換行，不用額外打\n之類的
+        // 模板字符串替換法: ${變量}
+        var s = `<h3>${goodsDetail.title}</h3>
+                 <!--簡介: 用p好處是會自動換行 且有默認上下間距-->
+                <p>${goodsDetail.recommend}</p>
+                <div class="priceWrap">
+                    <div class="priceTop">
+                        <span>價&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</span>
+                        <div class="price">
+                            <span>NT$</span>
+                            <P>${goodsDetail.price}</P>
+                            <!--小標籤可用i-->
+                            <i>降價通知</i>
+                        </div>
+                        <p>
+                            <span>${goodsDetail.evaluateNum}</span>
+                            <span>670000</span>
+                        </p>
+                    </div>
+                    <div class="priceBottom">
+                        <span>促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;銷</span>
+                        <p>
+                            <span>${goodsDetail.promoteSales.type}</span>
+                            <span>${goodsDetail.promoteSales.content}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="support">
+                    <span>支&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持</span>
+                    <p>${goodsDetail.support}</p>
+                </div>
+                <div class="address">
+                    <span>配&nbsp;送&nbsp;至</span>
+                    <p>${goodsDetail.address}</p>
+                </div>`;
+        // 重新渲染rightTop元素
+        rightTop.innerHTML = s;
+
+    }
 }
