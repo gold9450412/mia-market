@@ -196,6 +196,7 @@
             #center
             {
                 margin: 5px 0 15px;
+                .clearfix();
                 //左側放大鏡開始
                 #left
                 {
@@ -307,6 +308,149 @@
                             
                         }
                     }
+                }
+                //右側商品詳情區域開始
+                .right
+                {
+                    width: 700px;
+                    float: right;
+                    //商品詳情數據結構開始
+                    .rightTop
+                    {
+                        h3
+                        {
+                            font-size: 14px;
+                            line-height: 21px;
+                            margin-top: 15px;
+                        }
+                        p
+                        {        
+                            font-size: 14px;              
+                        }
+                        > p
+                        {
+                            color:  #e12228;
+                            margin-top: 15px;
+                        }
+                        span
+                        {
+                            font-size: 14px;
+                        }
+                        .priceWrap
+                        {
+                            margin-top: 10px;
+                            line-height: 28px;
+                            background: #fee9ec;
+                            padding: 7px;
+
+                            .priceTop
+                            {
+                                .clearfix();
+                                //價格
+                                //> 這是直屬的 避免影響到下方的span
+                                > span
+                                {
+                                    margin-right: 15px;
+                                    float: left;
+                                }
+                                .price
+                                {
+                                    float: left;
+                                    color: #cc1122;
+                                    > span
+                                    {
+                                        font-size: 16px;
+                                        float: left;
+                                    }
+                                    p
+                                    {
+                                        font-size: 24px;
+                                        float: left;
+                                        font-weight: bold;
+                                    }
+                                    i
+                                    {
+                                        font-size: 12px;
+                                        color: #cc1122;
+                                        float: left;
+                                    }
+                                }
+                                //累積評價
+                                > p
+                                {
+                                    float: right;
+                                    > span
+                                    {}
+                                }
+                            }
+                            .priceBottom
+                            {
+                                .clearfix();
+                                //促銷
+                                > span
+                                {
+                                    float: left;
+                                    margin-right: 15px;
+                                }
+                                > p
+                                {
+                                    width: 520px;
+                                    line-height: 28px;
+                                    float: left;
+                                    //促銷內的span標籤有2個，所以裡面還會用&去切
+                                    > span
+                                    {
+                                        //把float拿掉是為了文繞圖效果
+                                        color: #999;
+                                        //float: left;
+                                        //加價購
+                                        &:first-child
+                                        {
+                                            background: #c81623;
+                                            padding: 3px;
+                                            color: #fff;
+                                           // float: left;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .support
+                        {
+                            margin-top: 10px;
+                            line-height: 28px;
+                            .clearfix();
+                            > span
+                            {
+                                margin-right: 15px;
+                                float:left
+                            }
+                            > p
+                            {
+                                float: left;
+                                color: #999;
+                            }
+                        }
+                        .address
+                        {
+                            border-bottom: 1px solid #ededed;
+                            padding-bottom: 5px;
+                            margin-top: 10px;
+                            line-height: 28px;
+                            .clearfix();
+                            > span
+                            {
+                                margin-right: 15px;
+                                float:left
+                            }
+                            > p
+                            {
+                                float: left;
+                                color: #999;
+                            }
+                        }
+                    }
+
                 }
             }
             //中間區域結束
