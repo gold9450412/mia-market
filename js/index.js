@@ -357,30 +357,42 @@ window.onload = function()
      * 1. 獲取所有的dl元素，取其中第一個dl元素下的所有dd先做測試
      * 2. 循環所有的dd元素，並添加事件
      * 3. 確定實際發生事件的目標源對象設置其文字顏色為紅色，然後給其他所有的元素顏色都重置為基礎顏色(#666)
+     * 4. 測試完畢後，在dl最前面加上for，讓它應用於所有下標
      */
     clickaddBind();
     function clickaddBind()
     {
         //1. 獲取所有的dl元素，取其中第一個dl元素下的所有dd先做測試
         var dlNodes = document.querySelectorAll('#wrapper #content .contentMain #center #right .rightBottom .chooseWrap dl');   
-        var ddNodes = dlNodes[0].querySelectorAll('dd');
-
-        //2. 循環所有的dd元素，並添加事件
-        for (var i = 0; i < ddNodes.length; i++)
-        {   
-            ddNodes[i].onclick = function()
-            {
-                //3. 確定實際發生事件的目標源對象設置其文字顏色為紅色，然後給其他所有的元素顏色都重置為基礎顏色(#666)
-                //注意 這裡要用this，而不是ddNodes[i]，因為var的特性 for迴圈跑完後 i會卡在最後一個
-                //使用this則為該點擊呼叫對象
-                //重置dd顏色
-                for (j = 0; j < ddNodes.length; j++)
-                {
-                    ddNodes[j].style.color = "#666";
+        
+        //4. 測試完畢後，在dl最前面加上for，讓它應用於所有下標
+        for (var i = 0; i < dlNodes.length; i++)
+        {
+            //第四步要用閉包，因為閉包是堆空間，不會系統自動回收和複寫
+            //每次回圈呼叫的function，都是一個新的空間
+            (function(i){
+                var ddNodes = dlNodes[i].querySelectorAll('dd');
+                //2. 循環所有的dd元素，並添加事件
+                for (var j = 0; j < ddNodes.length; j++)
+                {   
+                    ddNodes[j].onclick = function()
+                    {
+                        //3. 確定實際發生事件的目標源對象設置其文字顏色為紅色，然後給其他所有的元素顏色都重置為基礎顏色(#666)
+                        //注意 這裡要用this，而不是ddNodes[i]，因為var的特性 for迴圈跑完後 i會卡在最後一個
+                        //使用this則為該點擊呼叫對象
+                        //重置dd顏色
+                        for (k = 0; k < ddNodes.length; k++)
+                        {
+                            //在第四步，加入外層迴圈後，這裡會有一個BUG
+                            //因為ddNodes最後會跑到 最後一個ddNode，所以所有onclick事件，這裡都會變成重製最後一個ddNode
+                            //解決方法: 閉包
+                            ddNodes[k].style.color = "#666";
+                        }
+                        this.style.color = "red";
+                    }
                 }
-                this.style.color = "red";
-            }
+            })(i);
+            
         }
-
     }
 }
