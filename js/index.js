@@ -358,6 +358,12 @@ window.onload = function()
      * 2. 循環所有的dd元素，並添加事件
      * 3. 確定實際發生事件的目標源對象設置其文字顏色為紅色，然後給其他所有的元素顏色都重置為基礎顏色(#666)
      * 4. 測試完畢後，在dl最前面加上for，讓它應用於所有下標
+     * ========================================================================
+     * 
+     * 點擊dd後產生mark標記元素
+     * 1. 創建一個數組，容納點擊的dd元素容器，確定數組的起始長度
+     * 2. 然後再將點擊的dd元素的值，按照對應下標，寫入的元素身上
+     * 3. 清空原本的mark後，再添加mark
      */
     clickaddBind();
     function clickaddBind()
@@ -365,6 +371,12 @@ window.onload = function()
         //1. 獲取所有的dl元素，取其中第一個dl元素下的所有dd先做測試
         var dlNodes = document.querySelectorAll('#wrapper #content .contentMain #center #right .rightBottom .chooseWrap dl');   
         
+        //1. 創建一個數組，容納點擊的dd元素容器，確定數組的起始長度
+        var arr = new Array(dlNodes.length);
+        //為數組增加默認值 (利用填充方法)
+        arr.fill(0);
+        var choose = document.querySelector('#wrapper #content .contentMain #center #right .rightBottom .choose');
+
         //4. 測試完畢後，在dl最前面加上for，讓它應用於所有下標
         for (var i = 0; i < dlNodes.length; i++)
         {
@@ -377,6 +389,9 @@ window.onload = function()
                 {   
                     ddNodes[j].onclick = function()
                     {
+                        //3. 清空原本的mark後，再添加mark
+                        choose.innerHTML = "";
+
                         //3. 確定實際發生事件的目標源對象設置其文字顏色為紅色，然後給其他所有的元素顏色都重置為基礎顏色(#666)
                         //注意 這裡要用this，而不是ddNodes[i]，因為var的特性 for迴圈跑完後 i會卡在最後一個
                         //使用this則為該點擊呼叫對象
@@ -389,6 +404,34 @@ window.onload = function()
                             ddNodes[k].style.color = "#666";
                         }
                         this.style.color = "red";
+                        
+                        //2. 然後再將點擊的dd元素的值，按照對應下標，寫入的元素身上
+                        //點擊後，動態產生一個新的mark標記元素
+                        arr[i] = this.innerText;
+
+                        //遍歷arr數組，將非0元素的值 寫入到mark元素中
+                        arr.forEach
+                        (
+                            function(value)
+                            {
+                                if (value != 0)
+                                {
+                                    //創建div元素
+                                    var markDiv = document.createElement('div');
+                                    markDiv.className = 'mark';
+                                    markDiv.innerText = value;
+
+                                    //創建a元素
+                                    var aNode = document.createElement('a');
+                                    aNode.innerText = 'X';
+
+                                    markDiv.appendChild(aNode);
+                                    
+                                    //讓choose元素追加div
+                                    choose.appendChild(markDiv);
+                                }
+                            }
+                        )
                     }
                 }
             })(i);

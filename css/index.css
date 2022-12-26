@@ -347,7 +347,7 @@
   display: block;
   content: '';
 }
-#wrapper #content .contentMain #center #right .rightBottom .choose #mark {
+#wrapper #content .contentMain #center #right .rightBottom .choose .mark {
   height: 30px;
   background: snow;
   border: 1px solid #ddd;
@@ -357,7 +357,7 @@
   line-height: 30px;
   float: left;
 }
-#wrapper #content .contentMain #center #right .rightBottom .choose #mark a {
+#wrapper #content .contentMain #center #right .rightBottom .choose .mark a {
   color: red;
   margin-left: 20px;
 }
