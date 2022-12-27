@@ -412,7 +412,7 @@ window.onload = function()
                         //遍歷arr數組，將非0元素的值 寫入到mark元素中
                         arr.forEach
                         (
-                            function(value)
+                            function(value, index)
                             {
                                 if (value != 0)
                                 {
@@ -424,6 +424,10 @@ window.onload = function()
                                     //創建a元素
                                     var aNode = document.createElement('a');
                                     aNode.innerText = 'X';
+                                    //為了以後的移除功能，需要在為他新增一個下標
+                                    //使用setAttribute 可以為html標籤 新增元素
+                                    //<a index="0">X</A>
+                                    aNode.setAttribute('index', index);
 
                                     markDiv.appendChild(aNode);
                                     
@@ -431,11 +435,44 @@ window.onload = function()
                                     choose.appendChild(markDiv);
                                 }
                             }
-                        )
+                        );
+
+                        //現在要做移除按鈕效果
+                        //獲取所有a標籤，並且循環設置點擊事件
+                        var aNodes = document.querySelectorAll('#wrapper #content .contentMain #center #right .rightBottom .choose .mark a');
+                        
+                        for (var n = 0; n < aNodes.length; n++)
+                        {
+                            aNodes[n].onclick = function()
+                            {
+                                //獲取點擊元素的index下標
+                                var idx1 = this.getAttribute('index');
+                                //恢復數組中，對應下標值
+                                arr[idx1] = 0;
+
+                                //找到對應下標的dd元素
+                                var ddlist = dlNodes[idx1].querySelectorAll('dd');
+
+                                //遍歷所有dd元素
+                                for ( var m = 0; m < ddlist.length; m++)
+                                {
+                                    //默認第一個元素為紅色，其餘為灰色
+                                    ddlist[m].style.color = '#666';
+                                }
+                                ddlist[0].style.color = "red";
+
+                                //刪除對應下標的mark元素
+                                //我們點的是a，所以他的parentNode為mark
+                                choose.removeChild(this.parentNode);
+                            }
+                        }
+                    
                     }
                 }
             })(i);
             
         }
     }
+
+
 }
