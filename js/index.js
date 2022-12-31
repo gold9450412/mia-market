@@ -341,6 +341,7 @@ window.onload = function()
                 //創建dd元素
                 var ddNode = document.createElement('dd');
                 ddNode.innerHTML = crumbData[i].data[j].type;
+                ddNode.setAttribute('price',crumbData[i].data[j].changePrice);
 
                 //dt追加dd
                 dlNode.appendChild(ddNode);
@@ -407,7 +408,10 @@ window.onload = function()
                         
                         //2. 然後再將點擊的dd元素的值，按照對應下標，寫入的元素身上
                         //點擊後，動態產生一個新的mark標記元素
-                        arr[i] = this.innerText;
+                        //這裡從原本的arr[i] = this.innerHTML改為arr[i] = this
+                        //原因是，現在要將arr裡面存放為dd元素，dd元素裡面有屬性price，可用於之後的價格計算顯示
+                        arr[i] = this;
+                        changePriceBind(arr);
 
                         //遍歷arr數組，將非0元素的值 寫入到mark元素中
                         arr.forEach
@@ -419,7 +423,7 @@ window.onload = function()
                                     //創建div元素
                                     var markDiv = document.createElement('div');
                                     markDiv.className = 'mark';
-                                    markDiv.innerText = value;
+                                    markDiv.innerText = value.innerHTML;
 
                                     //創建a元素
                                     var aNode = document.createElement('a');
@@ -464,6 +468,8 @@ window.onload = function()
                                 //刪除對應下標的mark元素
                                 //我們點的是a，所以他的parentNode為mark
                                 choose.removeChild(this.parentNode);
+
+                                changePriceBind(arr);
                             }
                         }
                     
@@ -474,5 +480,37 @@ window.onload = function()
         }
     }
 
+    //價格變動的函數
+    /**
+     * 點擊dd以及 刪除mark時，才需要調用
+     * 1. 獲取價格標籤元素
+     * 2. 給每個dd標籤，都記錄一個屬性，用來記錄變化的價格
+     * 3. 遍歷arr數組，將dd元素身上的變化價格和已有的價格(5299)相加
+     * 4. 渲染計算結果到p元素中
+     */
+    function changePriceBind(arr)
+    {
+        //1. 獲取價格標籤元素
+        var oldPrice = document.querySelector('#wrapper #content .contentMain #center #right .rightTop .priceWrap .priceTop .price p');
+   
+        //取出默認價格
+        var price = goodData.goodDetail.price;
 
+        //2. 給每個dd標籤，都記錄一個屬性，用來記錄變化的價格
+        //3. 遍歷arr數組，將dd元素身上的變化價格和已有的價格(5299)相加
+        for (var i = 0; i < arr.length; i++)
+        {
+            //arr非0才要取價格
+            if (arr[i])
+            {
+                //屬性是字串，記得強制轉換為數字
+                var changePrice = Number(arr[i].getAttribute('price'));
+
+                //最終價格
+                price = price + changePrice;
+            }
+        }
+
+        oldPrice.innerHTML = price;
+    }
 }
