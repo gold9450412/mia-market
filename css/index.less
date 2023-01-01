@@ -582,11 +582,15 @@
                 width: 1200px;
                 margin: 30px auto 0;
                 font-size: 12px;
+                //左右大欄位浮動後，需要用clearfix
+                .clearfix();
                 .leftAside
                 {
                     width: 210px;
                     border: 1px solid #ccc;
                     .clearfix();
+                    //為了和右側欄位水平對齊  需要用浮動 避免高度塌陷
+                    float: left;
                     //上邊
                     .asideTop
                     {
@@ -640,11 +644,11 @@
                                             border-bottom: 1px solid #ededed;
                                             img
                                             {
-                                                width: 152px;
+                                                width: 162px;
                                             }
                                             span
                                             {
-
+                                                font-size: 14px;
                                             }
                                             p
                                             {
@@ -668,6 +672,143 @@
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+
+                //右側結構
+                .rightDetail
+                {
+                    width: 980px;
+                    float: left;
+                    margin-left: 8px;
+                    //選擇搭配開始
+                    .chooseBox
+                    {
+                        border: 1px solid #ddd;
+                        margin-bottom: 15px;
+                        //標題
+                        h4
+                        {
+                            border-bottom: 1px solid #ddd;
+                            background: #f1f1f1;
+                            color: #333;
+                            padding: 5px 0 5px 15px;
+                        }
+                        //內容
+                        .listWrap
+                        {
+                            height: 170px;
+                            padding-top: 10px;
+                            //左側
+                            .left
+                            {
+                                width: 127px;
+                                height: 165px;
+                                position: relative;
+                                float: left;
+                                text-align: center;
+                                
+                                .leftPriceWrap
+                                {
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    right: 0;
+                                    left: 0;
+                                    height: 103px;
+                                    margin: auto;
+                                    
+                                    img
+                                    {
+                                        width: 87px;
+                                        margin: 0 auto;
+                                    }
+                                    p
+                                    {
+                                        color: #c81623;
+                                        font-size: 16px;
+                                    }
+                                }
+                                
+                                i
+                                {
+                                    position: absolute;
+                                    top: 50%;
+                                    right: -5px;
+                                    font-size: 16px;
+                                    
+                                }
+                            }
+
+                            //中間
+                            .middle
+                            {
+                                width: 668px;
+                                height: 165px;
+                                float: left;
+                                text-align: center;
+                                li
+                                {
+                                    width: 127px;
+                                    margin-left: 20px;
+                                    margin-right: 20px;
+                                    float: left;
+                                    img
+                                    {
+                                        width: 120px;
+                                        height: 130px;
+                                    }
+                                    //這裡用 > 表示直接的span，避免改到孫子
+                                    > span
+                                    {
+
+                                    }
+                                    div
+                                    {
+                                        input
+                                        {}
+                                        span
+                                        {}
+                                    }
+                                }
+                            }
+
+                            //右側
+                            .right
+                            {
+                                border-left: 1px solid #ddd;
+                                float: left;
+                                width: 153px;
+                                height: 165px;
+                                padding-left: 20px;
+
+                                div
+                                {
+                                    margin-top: 10px;
+                                    margin-bottom: 10px;
+                                }
+                                p
+                                {
+                                    font-weight: bold;
+                                    margin-bottom: 10px;
+                                }
+                                i
+                                {
+                                    color: #b1191a;
+                                    font-size: 16px;
+                                    margin-bottom: 10px;
+                                }
+
+                                button
+                                {
+                                    padding: 10px 25px;
+                                    font-size: 16px;
+                                    color: #fff;
+                                    background: #e1251b;
+                                    border: none;
+                                }       
                             }
                         }
                     }

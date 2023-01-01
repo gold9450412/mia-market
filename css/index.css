@@ -442,9 +442,15 @@
   margin: 30px auto 0;
   font-size: 12px;
 }
+#wrapper #content .contentMain .goodsDetailWrap::after {
+  clear: both;
+  display: block;
+  content: '';
+}
 #wrapper #content .contentMain .goodsDetailWrap .leftAside {
   width: 210px;
   border: 1px solid #ccc;
+  float: left;
 }
 #wrapper #content .contentMain .goodsDetailWrap .leftAside::after {
   clear: both;
@@ -490,7 +496,10 @@
   border-bottom: 1px solid #ededed;
 }
 #wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist2 li img {
-  width: 152px;
+  width: 162px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist2 li span {
+  font-size: 14px;
 }
 #wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist2 li p {
   font-size: 16px;
@@ -506,4 +515,96 @@
   padding: 2px 14px;
   line-height: 18px;
   border: 1px solid #8c8c8c;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail {
+  width: 980px;
+  float: left;
+  margin-left: 8px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox {
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox h4 {
+  border-bottom: 1px solid #ddd;
+  background: #f1f1f1;
+  color: #333;
+  padding: 5px 0 5px 15px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap {
+  height: 170px;
+  padding-top: 10px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .left {
+  width: 127px;
+  height: 165px;
+  position: relative;
+  float: left;
+  text-align: center;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .left .leftPriceWrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 103px;
+  margin: auto;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .left .leftPriceWrap img {
+  width: 87px;
+  margin: 0 auto;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .left .leftPriceWrap p {
+  color: #c81623;
+  font-size: 16px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .left i {
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  font-size: 16px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .middle {
+  width: 668px;
+  height: 165px;
+  float: left;
+  text-align: center;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .middle li {
+  width: 127px;
+  margin-left: 20px;
+  margin-right: 20px;
+  float: left;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .middle li img {
+  width: 120px;
+  height: 130px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .right {
+  border-left: 1px solid #ddd;
+  float: left;
+  width: 153px;
+  height: 165px;
+  padding-left: 20px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .right div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .right p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .right i {
+  color: #b1191a;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .right button {
+  padding: 10px 25px;
+  font-size: 16px;
+  color: #fff;
+  background: #e1251b;
+  border: none;
 }
