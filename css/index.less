@@ -587,10 +587,10 @@
                     width: 210px;
                     border: 1px solid #ccc;
                     .clearfix();
-                    height: 1000px;
                     //上邊
                     .asideTop
                     {
+                        .clearfix();
                         h4
                         {
                             width: 105px;
@@ -618,7 +618,57 @@
                         padding: 10px;
                         div
                         {
+                            &.active
+                            {
+                                ul
+                                {
+                                    &.goodslist1
+                                    {
+                                        li
+                                        {
+                                            width: 50%;
+                                            border-bottom: 1px dashed #ededed;
+                                            line-height: 28px;
+                                            float: left;
+                                        }
+                                    }
+                                    &.goodslist2
+                                    {
+                                        margin: 5px 0 15px;
+                                        li
+                                        {
+                                            border-bottom: 1px solid #ededed;
+                                            img
+                                            {
+                                                width: 152px;
+                                            }
+                                            span
+                                            {
 
+                                            }
+                                            p
+                                            {
+                                                font-size: 16px;
+                                                color: #c81623;
+                                            }
+                                            .button
+                                            {
+                                                margin-top: 5px;
+                                                margin-bottom: 5px;
+                                                text-align: center;
+
+                                                a
+                                                {
+                                                    color: #8c8c8c;
+                                                    padding: 2px 14px;
+                                                    line-height: 18px;
+                                                    border: 1px solid #8c8c8c;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

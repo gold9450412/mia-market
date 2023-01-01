@@ -445,9 +445,13 @@
 #wrapper #content .contentMain .goodsDetailWrap .leftAside {
   width: 210px;
   border: 1px solid #ccc;
-  height: 1000px;
 }
 #wrapper #content .contentMain .goodsDetailWrap .leftAside::after {
+  clear: both;
+  display: block;
+  content: '';
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideTop::after {
   clear: both;
   display: block;
   content: '';
@@ -472,4 +476,34 @@
 }
 #wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent {
   padding: 10px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist1 li {
+  width: 50%;
+  border-bottom: 1px dashed #ededed;
+  line-height: 28px;
+  float: left;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist2 {
+  margin: 5px 0 15px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist2 li {
+  border-bottom: 1px solid #ededed;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist2 li img {
+  width: 152px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist2 li p {
+  font-size: 16px;
+  color: #c81623;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist2 li .button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist2 li .button a {
+  color: #8c8c8c;
+  padding: 2px 14px;
+  line-height: 18px;
+  border: 1px solid #8c8c8c;
 }
