@@ -437,3 +437,39 @@
   border: none;
   float: left;
 }
+#wrapper #content .contentMain .goodsDetailWrap {
+  width: 1200px;
+  margin: 30px auto 0;
+  font-size: 12px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside {
+  width: 210px;
+  border: 1px solid #ccc;
+  height: 1000px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside::after {
+  clear: both;
+  display: block;
+  content: '';
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideTop h4 {
+  width: 105px;
+  height: 40px;
+  background: #fff;
+  float: left;
+  text-align: center;
+  line-height: 40px;
+  border-bottom: 1px solid #ccc;
+  border-top: 3px solid #fff;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideTop h4.active {
+  border-top: 3px solid #e1251b;
+  width: 105px;
+  line-height: 37px;
+  text-align: center;
+  line-height: 40px;
+  border-bottom: none;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent {
+  padding: 10px;
+}
