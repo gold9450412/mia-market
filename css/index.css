@@ -483,6 +483,12 @@
 #wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent {
   padding: 10px;
 }
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div {
+  display: none;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active {
+  display: block;
+}
 #wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div.active ul.goodslist1 li {
   width: 50%;
   border-bottom: 1px dashed #ededed;
@@ -619,7 +625,7 @@
 #wrapper #content .contentMain .goodsDetailWrap .rightDetail .BottomDetail .tabBtns li {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
   background: #fff;
   height: 40px;
   padding-left: 11px;
@@ -629,11 +635,13 @@
   line-height: 40px;
 }
 #wrapper #content .contentMain .goodsDetailWrap .rightDetail .BottomDetail .tabBtns li.active {
-  border-left: 1px solid #ddd;
   background: red;
 }
 #wrapper #content .contentMain .goodsDetailWrap .rightDetail .BottomDetail .tabBtns li.active a {
   color: #fff;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .BottomDetail .tabBtns li:last-child {
+  border-right: 1px solid #ddd;
 }
 #wrapper #content .contentMain .goodsDetailWrap .rightDetail .BottomDetail .tabContents div {
   padding-left: 20px;

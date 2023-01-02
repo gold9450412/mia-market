@@ -567,4 +567,51 @@ window.onload = function()
             }
         }
     }
+
+    /**封裝一個公共的選項卡函數  需要用選項卡函數的，都必須要有一個預設className active在less中
+     * tabBtns  被點擊的元素
+     * tabConts 被切換顯示的元素
+     */
+    function Tab(tabBtns, tabConts)
+    {
+        for (var i = 0; i < tabBtns.length; i++)
+        {
+            tabBtns[i].index = i;
+            tabBtns[i].onclick = function()
+            {
+                for (var j = 0; j < tabBtns.length; j++)
+                {
+                    //清除默認
+                    tabBtns[j].className = '';
+                    tabConts[j].className = '';
+                }
+                this.className = 'active';
+                tabConts[this.index].className = 'active';
+            }
+        }
+    }
+
+    //點擊左側選項卡
+    leftTab();
+    function leftTab()
+    {
+        var h4s = document.querySelectorAll('#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideTop h4');
+        //被切換元素
+        //關鍵: 最後div需要是 ""> div"，因為原本的div底下還有div，所以要用>指定直接的div
+        //var divs = document.querySelectorAll('#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent div');
+        var divs = document.querySelectorAll('#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideContent > div');
+        //調用Tab
+        Tab(h4s, divs);
+    }
+
+    //點擊右側選項卡
+    rightTab();
+    function rightTab()
+    {
+        var lis = document.querySelectorAll('#wrapper #content .contentMain .goodsDetailWrap .rightDetail .BottomDetail .tabBtns li');
+        //被切換元素
+        var divs = document.querySelectorAll('#wrapper #content .contentMain .goodsDetailWrap .rightDetail .BottomDetail .tabContents div');
+        //調用Tab
+        Tab(lis, divs);
+    }
 }

@@ -622,8 +622,10 @@
                         padding: 10px;
                         div
                         {
+                            display: none;
                             &.active
                             {
+                                display: block;
                                 ul
                                 {
                                     &.goodslist1
@@ -831,8 +833,9 @@
                                 //所以下方少加一個左邊框，而第一個元素的左邊框加在&.active內
                                 border-top: 1px solid #ddd;
                                 border-bottom: 1px solid #ddd;
-                                border-right: 1px solid #ddd;
-
+                                border-left: 1px solid #ddd;
+                                //後續維護中發現，active class會改動，此時border-left也會跟著變動
+                                //所以乾脆固定border-left，然後用&:last-child 在最後添加邊框
                                 background: #fff;
                                 height: 40px;
                                 padding-left: 11px;
@@ -842,12 +845,16 @@
                                 line-height: 40px;
                                 &.active
                                 {
-                                    border-left: 1px solid #ddd;
+                                    
                                     background: red;
                                     a
                                     {
                                         color: #fff;
                                     }
+                                }
+                                &:last-child
+                                {
+                                    border-right: 1px solid #ddd;
                                 }
                             }
                         }
