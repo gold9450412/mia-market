@@ -812,6 +812,66 @@
                             }
                         }
                     }
+                    //選擇搭配結束
+
+                    //選項卡開始
+                    .BottomDetail
+                    {
+                        
+                        //菜單
+                        .tabBtns
+                        {
+                            background: #ededed;
+                            //沒有clearfix解決高度塌陷的話，上方的background將會失效
+                            .clearfix();
+                            li
+                            {
+                                //border: 1px solid #ddd;
+                                //使用border會有邊框合併的問題，例如:第一個元素的左邊框1px，和下個元素的右邊框1px合併 變成2px
+                                //所以下方少加一個左邊框，而第一個元素的左邊框加在&.active內
+                                border-top: 1px solid #ddd;
+                                border-bottom: 1px solid #ddd;
+                                border-right: 1px solid #ddd;
+
+                                background: #fff;
+                                height: 40px;
+                                padding-left: 11px;
+                                padding-right: 11px;
+                                float: left;
+                                text-align: center;
+                                line-height: 40px;
+                                &.active
+                                {
+                                    border-left: 1px solid #ddd;
+                                    background: red;
+                                    a
+                                    {
+                                        color: #fff;
+                                    }
+                                }
+                            }
+                        }
+
+                        //內容
+                        .tabContents
+                        {
+                            div
+                            {
+                                //利用padding創造出 文字開頭的間距
+                                padding-left: 20px;
+                                //行與下行之間的間距
+                                line-height: 25px;
+                                display: none;
+                                &.active
+                                {
+                                    margin: 10px 0;
+                                    display: block;
+                                }
+
+                            }
+                        }
+                    }
+                    //選項卡結束
                 }
             }
             //商品詳情中間部分結束
