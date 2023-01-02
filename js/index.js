@@ -512,5 +512,59 @@ window.onload = function()
         }
 
         oldPrice.innerHTML = price;
+
+        //點擊套餐項目，價格需要變動
+        //3. 將變化後的價格(changePriceBind)，寫入左側標籤中
+        var leftprice = document.querySelector('#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .left .leftPriceWrap p');
+        leftprice.innerText = 'NT$' + price;
+        
+        //根據複選框 重新渲染 套餐價
+        var ipts = document.querySelectorAll('#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .middle li input');
+        for (var j = 0; j < ipts.length; j++)
+        {
+            if (ipts[j].checked)
+            {
+                price += Number(ipts[j].value);
+            }
+        }
+        var newprice = document.querySelector('#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .right i');
+        newprice.innerText = 'NT$' + price;
+    }
+
+    /**
+     * 點擊套餐項目，價格需要變動
+     * 
+     * 1. 獲取中間區域所有的複選框元素
+     * 2. 遍歷這些元素，並取出他們的價格，有左側基礎價格進行累加，變重新寫回套餐價格標籤
+     * 3. 將變化後的價格(changePriceBind)，寫入左側標籤中
+     */
+    chooseprice();
+    function chooseprice()
+    {
+        //1. 獲取中間區域所有的複選框元素
+        var ipts = document.querySelectorAll('#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .middle li input');
+        var leftprice = document.querySelector('#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .left .leftPriceWrap p');
+        var newprice = document.querySelector('#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .right i');
+        //2. 遍歷這些元素，並取出他們的價格，有左側基礎價格進行累加，變重新寫回套餐價格標籤
+        for (var i = 0; i < ipts.length; i++)
+        {
+            ipts[i].onclick = function()
+            {
+                //因為拿到的leftprice是NT$5299，要透過slice，把NT$去掉
+                var oldprice = Number(leftprice.innerText.slice(3));
+                for (var j = 0; j < ipts.length; j++)
+                {
+                    if (ipts[j].checked)
+                    {
+                        //遍歷全部的複選框，如果有背勾選，就加進左側價格
+                        //記得，複選框選出來的 是字串，要用Number轉換
+                        oldprice = oldprice + Number(ipts[j].value);
+                    }
+                }
+
+                //重新寫回套餐價標籤當中
+                newprice.innerText = "NT$" + oldprice;
+            }
+        }
     }
 }

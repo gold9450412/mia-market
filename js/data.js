@@ -39,7 +39,7 @@ var goodData =
     {
         title: "Apple iPhone 14s pro 64G 玫瑰金色",
         recommend: "推薦選擇下方[移動優惠]，手機套餐一齊搞定，不用換號",
-        price: 5399,
+        price: 5299,
         promoteSales: 
         {
             type: "加購價",
