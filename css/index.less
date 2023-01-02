@@ -885,4 +885,35 @@
         }
     }
     //內容區域結束
+
+    //右側側邊欄開始
+    .rightAside
+    {
+        width: 300px;
+        height: 100%;
+        background: #7a6e6e;
+        transition: 0.5s;
+        position: fixed;
+        top: 0px;
+        &.asideClose
+        {
+            right: -294px;
+        }
+        //按鈕區域
+        .btns
+        {
+            width: 35px;
+            height: 35px;
+            background: #7a6e6e;
+            border-radius: 5px 0 0 5px;
+            left: -29px;
+            background-size: 35px 35px;
+            position: absolute;
+            &.btnsClose
+            {
+                background-image: url('../images/logo.png');
+            }
+        }
+    }
+    //右側側邊欄結束
 }
