@@ -614,4 +614,39 @@ window.onload = function()
         //調用Tab
         Tab(lis, divs);
     }
+
+    //右邊側邊欄 點擊效果
+    /**
+     * 1. 找到按鈕元素 發生點擊事件
+     * 2. 紀錄初始的狀態 在點擊事件內判斷
+     * 3. 根據當前狀態 取反className
+     */
+    rightAsideBind();
+    function rightAsideBind()
+    {
+        //1. 找到按鈕元素 發生點擊事件
+        var btns = document.querySelector('#wrapper .rightAside .btns');
+        //查找側邊欄元素
+        var rightAside = document.querySelector('#wrapper .rightAside');
+
+        //2. 紀錄初始的狀態 在點擊事件內判斷
+        var flag = true;
+        btns.onclick = function()
+        {
+            if (flag)
+            {
+                //展開
+                flag = false;
+                btns.className = 'btns btnsOpen';
+                rightAside.className = 'rightAside asideOpen';
+            }
+            else
+            {
+                //關閉
+                flag = true;
+                btns.className = 'btns btnsClose';
+                rightAside.className = 'rightAside asideClose';
+            }
+        }
+    }
 }
