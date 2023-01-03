@@ -897,7 +897,7 @@
         top: 0px;
         &.asideClose
         {
-            right: -294px;
+            right: 0px;
         }
         //按鈕區域
         .btns
@@ -912,6 +912,68 @@
             &.btnsClose
             {
                 background-image: url('../images/logo.png');
+            }
+        }
+        //側邊欄的內容區域
+        .content
+        {
+            width: 294px;
+            background: bisque;
+            position: absolute;
+            left: 6px;
+            top: 0px;
+            bottom: 0px;
+            z-index: 50;
+        }
+        //側邊導航
+        .navlist
+        {
+            position: absolute;
+            left: -29px;
+            //垂直居中
+            top: 50%;
+            transform:  translateY(-50%);
+
+            li
+            {
+                width: 35px;
+                height: 35px;
+                position: relative;
+                p
+                {
+                    width: 35px;
+                    height: 35px;
+                    background: #7a6e6e;
+                    //記住要size 才能呈現圖片
+                    background-size: 35px 35px;
+                    background-image: url('../images/logo.png');
+                    transition: 0.5s;
+                }
+                i
+                {
+                    font-size: 12px;
+                    width: 62px;
+                    height: 35px;
+                    text-align: center;
+                    line-height: 35px;
+                    position: absolute;
+                    left: 35px;
+                    transition: 0.5s;
+                    top: 0px;
+                    background: #7a6e6e;
+                }
+                &:hover
+                {
+                    p
+                    {
+                        background-color: pink;
+                    }
+                    i
+                    {
+                        background-color: pink;
+                        left: -62px;
+                    }
+                }
             }
         }
     }
